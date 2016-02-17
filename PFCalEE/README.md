@@ -9,8 +9,7 @@ Changes are as follows:
 
 ## Setup the environment (SLC6)
 
-source g4env4lpc.csh (csh)
-source g4env4lpc.sh (sh)
+source g4env4lpc.[c]sh ([c]sh)
 
 ## Compile
 
@@ -21,5 +20,4 @@ libraries to coexist.
 
 ## Submit jobs
 
-cd scripts
-submitFTTBJobs@LPC.sh # which calls submitFastTimeTestBeamProd@LPC.py, edit as necessary first
+cd scripts; submitFTTBJobs@LPC.sh # which calls submitFastTimeTestBeamProd@LPC.py, edit as necessary first
