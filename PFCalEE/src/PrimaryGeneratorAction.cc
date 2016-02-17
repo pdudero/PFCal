@@ -123,8 +123,8 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   //FAST TIME TEST BEAM MODEL
   if (model_ == 5)
     {
-      x0=(G4RandFlat::shoot(-1.5*cm,+1.5*cm));
-      y0=(G4RandFlat::shoot(-1.5*cm,+1.5*cm));
+      x0=(G4RandFlat::shoot(-1.0*cm,+1.0*cm));
+      y0=(G4RandFlat::shoot(-1.0*cm,+1.0*cm));
       z0=-Detector->GetCalorSizeZ()*2;
     }
 
@@ -141,7 +141,7 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   else
     G4Exception("PrimaryGeneratorAction::GeneratePrimaries",
                 "PrimaryGeneratorAction001", FatalException,
-                "generator is not instanciated." );
+                "generator is not instantiated." );
 
 
 }

@@ -1,6 +1,7 @@
+import sys
+#sys.argv.append( '-b-' )
 import ROOT
 import os
-import sys
 import optparse
 from array import array
 
@@ -11,6 +12,10 @@ def analyze(url,windowSize=2.5,fixedWindow=True,fOutName='H4treeReco.root'):
 
     #get G4 simulation tree from file and 
     fIn=ROOT.TFile.Open(url)
+    if not fIn:
+        print 'failed to open the file',url
+        return
+
     tree=fIn.Get('HGCSSTree')
     print '....analyzing %s with %d events' % (url,tree.GetEntriesFast())
 
@@ -157,7 +162,7 @@ def main():
     (opt, args) = parser.parse_args()
 
     #load userlib classes
-    ROOT.gSystem.Load('libPFCalEEuserlib')
+    ROOT.gSystem.Load('libPFCalTBuserlib')
 
     #create list of tasks
     task_list=[]
@@ -181,6 +186,10 @@ def main():
             if useEOS: url='root://eoscms//'+url
             fixedWindow=True #False if 'mu-' in url else True
             task_list.append( (url,opt.window,fixedWindow,fOutName) )
+
+    if len(task_list) == 0:
+        print "ERROR: no root files found in " + opt.inDir
+        sys.exit(1)
 
     #un-mount
     if useEOS:

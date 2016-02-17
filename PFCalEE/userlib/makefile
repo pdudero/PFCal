@@ -1,5 +1,5 @@
 # name of the library
-LIBNAME = PFCalEEuserlib
+LIBNAME = PFCalTBuserlib
 
 #Necessary to use shell built-in commands
 SHELL=bash
